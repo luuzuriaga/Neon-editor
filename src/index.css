@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-deep-blue: #0a0a24;
+  --color-deep-blue: #08081c;
   
-  /* Colores Pastel Milkshake (Llamativos pero suaves) */
-  --color-milk-pink: #ff85ff;   /* Rosa intenso para Upload */
-  --color-milk-blue: #80dfff;   /* Celeste */
+  /* Colores Pastel Milkshake (Ajustados para contrastar en CRT) */
+  --color-milk-pink: #ff9eff;   /* Rosa intenso para Upload */
+  --color-milk-blue: #a3e7ff;   /* Celeste brillante */
   --color-milk-purple: #c48eff; /* Morado suave */
-  --color-milk-indigo: #a3a3ff; /* Indigo/Lavanda */
-  --color-milk-teal: #66ffd1;   /* Menta/Turquesa */
+  --color-milk-indigo: #b3b3ff; /* Indigo/Lavanda */
+  --color-milk-teal: #80ffd4;   /* Menta/Turquesa */
   --color-pastel-white: #f8f8ff;
   
   --font-retro-play: "Press Start 2P", system-ui;
@@ -18,52 +18,76 @@
 @layer base {
   body {
     @apply bg-deep-blue text-pastel-white min-h-screen;
-    background: radial-gradient(circle at 50% 10%, #1e0033 0%, #0a0a24 100%);
+    background: radial-gradient(circle at 50% 10%, #1a0033 0%, #08081c 100%);
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap');
 
+/* --- TEXTURA DE RUIDO/ESTÁTICA (Noise) --- */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --- CUADRÍCULA DE FONDO ANIMADA (Perspective) --- */
+.bg-retro-grid {
+  background-image: linear-gradient(rgba(112, 214, 255, 0.2) 1px, transparent 1px), 
+                    linear-gradient(90deg, rgba(112, 214, 255, 0.2) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center;
+  transform: perspective(400px) rotateX(60deg) translateY(-20%);
+  transform-origin: top center;
+}
+
+@keyframes grid-drift {
+  from { background-position: center 0px; }
+  to { background-position: center 50px; }
+}
+
+.animate-grid-drift {
+  animation: grid-drift 3s linear infinite;
+}
+
+/* --- TÍTULO CON GRADIENTE Y BRILLO NEÓN --- */
 .title-gradient {
   color: white;
-  text-shadow: 0 0 10px rgba(255, 133, 255, 0.5), 0 0 30px rgba(196, 142, 255, 0.4);
+  text-shadow: 0 0 10px rgba(255, 158, 255, 0.6), 0 0 30px rgba(196, 142, 255, 0.4);
 }
 
-.retro-border-soft {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(128, 223, 255, 0.1);
+/* --- BORDES FUTURISTAS/METALIZADOS (Estilo Nickel/Chrome) --- */
+.retro-border-futuristic {
+  border: 4px solid rgba(200, 200, 200, 0.1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8), 
+              0 0 15px rgba(163, 231, 255, 0.1), /* Sutil brillo cian */
+              inset 0 0 2px rgba(255,255,255,0.05);
 }
 
+/* --- LÍNEAS DE ESCANEO (CRT Monitor) --- */
 .bg-scanline {
   background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
   background-size: 100% 4px;
 }
 
+/* --- PANELES DE CRISTAL ESMERILADO (Glassmorphism) --- */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(10, 10, 30, 0.6);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* --- SOMBRAS DE NEÓN PASTEL (Glow effect en Hover) --- */
-.shadow-neon-milk-blue { box-shadow: 0 0 20px rgba(128, 223, 255, 0.4); }
-.shadow-neon-milk-pink { box-shadow: 0 0 20px rgba(255, 133, 255, 0.4); }
-.shadow-neon-milk-purple { box-shadow: 0 0 20px rgba(196, 142, 255, 0.4); }
-.shadow-neon-milk-indigo { box-shadow: 0 0 20px rgba(163, 163, 255, 0.4); }
-.shadow-neon-milk-teal { box-shadow: 0 0 20px rgba(102, 255, 209, 0.4); }
+/* --- SOMBRAS DE NEÓN PASTEL (Intensificadas en Hover) --- */
+.shadow-neon-milk-blue { box-shadow: 0 0 25px rgba(163, 231, 255, 0.5); }
+.shadow-neon-milk-pink { box-shadow: 0 0 25px rgba(255, 158, 255, 0.5); }
+.shadow-neon-milk-purple { box-shadow: 0 0 25px rgba(196, 142, 255, 0.5); }
+.shadow-neon-milk-indigo { box-shadow: 0 0 25px rgba(179, 179, 255, 0.5); }
+.shadow-neon-milk-teal { box-shadow: 0 0 25px rgba(128, 255, 212, 0.5); }
 
-/* --- CLASES DE UTILIDAD PARA COLORES DINÁMICOS --- */
-.border-milk-blue\/30 { border-color: rgba(128, 223, 255, 0.3); }
-.border-milk-pink\/30 { border-color: rgba(255, 133, 255, 0.3); }
+/* --- CLASES DE UTILIDAD PARA COLORES DINÁMICOS (Tailwind Helpers) --- */
+.border-milk-blue\/30 { border-color: rgba(163, 231, 255, 0.3); }
+.border-milk-pink\/30 { border-color: rgba(255, 158, 255, 0.3); }
 .border-milk-purple\/30 { border-color: rgba(196, 142, 255, 0.3); }
-.border-milk-indigo\/30 { border-color: rgba(163, 163, 255, 0.3); }
-.border-milk-teal\/30 { border-color: rgba(102, 255, 209, 0.3); }
-
-.hover\:border-milk-blue:hover { border-color: var(--color-milk-blue); }
-.hover\:border-milk-pink:hover { border-color: var(--color-milk-pink); }
-.hover\:border-milk-purple:hover { border-color: var(--color-milk-purple); }
-.hover\:border-milk-indigo:hover { border-color: var(--color-milk-indigo); }
-.hover\:border-milk-teal:hover { border-color: var(--color-milk-teal); }
+.border-milk-indigo\/30 { border-color: rgba(179, 179, 255, 0.3); }
+.border-milk-teal\/30 { border-color: rgba(128, 255, 212, 0.3); }
 
 .text-milk-blue { color: var(--color-milk-blue); }
 .text-milk-pink { color: var(--color-milk-pink); }
@@ -72,23 +96,30 @@
 .text-milk-teal { color: var(--color-milk-teal); }
 
 .bg-milk-pink { background-color: var(--color-milk-pink); }
-.bg-milk-teal { background-color: var(--color-milk-teal); }
+.hover\:bg-milk-pink:hover { background-color: var(--color-milk-pink); }
+.bg-pastel-white { background-color: var(--color-pastel-white); }
+.active\:bg-pastel-white:active { background-color: var(--color-pastel-white); }
 
-.hover\:bg-milk-blue\/30:hover { background-color: rgba(128, 223, 255, 0.3); }
-.hover\:bg-milk-pink\/30:hover { background-color: rgba(255, 133, 255, 0.3); }
+.hover\:border-milk-blue:hover { border-color: var(--color-milk-blue); }
+.hover\:border-milk-pink:hover { border-color: var(--color-milk-pink); }
+.hover\:border-milk-purple:hover { border-color: var(--color-milk-purple); }
+.hover\:border-milk-indigo:hover { border-color: var(--color-milk-indigo); }
+.hover\:border-milk-teal:hover { border-color: var(--color-milk-teal); }
+.hover\:border-pastel-white:hover { border-color: var(--color-pastel-white); }
+
+.hover\:bg-milk-blue\/30:hover { background-color: rgba(163, 231, 255, 0.3); }
+.hover\:bg-milk-pink\/30:hover { background-color: rgba(255, 158, 255, 0.3); }
 .hover\:bg-milk-purple\/30:hover { background-color: rgba(196, 142, 255, 0.3); }
-.hover\:bg-milk-indigo\/30:hover { background-color: rgba(163, 163, 255, 0.3); }
-.hover\:bg-milk-teal\/30:hover { background-color: rgba(102, 255, 209, 0.3); }
+.hover\:bg-milk-indigo\/30:hover { background-color: rgba(179, 179, 255, 0.3); }
+.hover\:bg-milk-teal\/30:hover { background-color: rgba(128, 255, 212, 0.3); }
 
-.group-hover\:bg-milk-blue:hover .group-hover\:bg-milk-blue { background-color: var(--color-milk-blue); }
-.group-hover\:bg-milk-pink:hover .group-hover\:bg-milk-pink { background-color: var(--color-milk-pink); }
-.group-hover\:bg-milk-purple:hover .group-hover\:bg-milk-purple { background-color: var(--color-milk-purple); }
-.group-hover\:bg-milk-indigo:hover .group-hover\:bg-milk-indigo { background-color: var(--color-milk-indigo); }
-.group-hover\:bg-milk-teal:hover .group-hover\:bg-milk-teal { background-color: var(--color-milk-teal); }
+/* Inversiones sutiles en 'active' */
+.active\:text-deep-blue:active { color: var(--color-deep-blue); }
+.active\:border-white:active { border-color: white; }
 
-/* Clases 'active' (al hacer clic) para invertir los colores */
-.active\:bg-milk-blue:active { background-color: var(--color-milk-blue); }
-.active\:bg-milk-pink:active { background-color: var(--color-milk-pink); }
-.active\:bg-milk-purple:active { background-color: var(--color-milk-purple); }
-.active\:bg-milk-indigo:active { background-color: var(--color-milk-indigo); }
-.active\:bg-milk-teal:active { background-color: var(--color-milk-teal); }
+/* Animación sutil de parpadeo */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+.animate-flicker-slow { animation: flicker 4s infinite ease-in-out; }
