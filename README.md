@@ -47,7 +47,7 @@ The application allows users to transform their photos using advanced neural fil
 
 This contains everything you need to run your app locally.
 
-View your app in
+View your app in https://neon-editor-six.vercel.app/
 
 ## Run Locally
 
