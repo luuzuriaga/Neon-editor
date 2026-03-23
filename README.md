@@ -40,7 +40,7 @@ The application allows users to transform their photos using advanced neural fil
 
 1. Clone this repository:
    ```bash
-   git clone [https://github.com/luuzuriaga/Neon-editor.git](https://github.com/luuzuriaga/Neon-editor.git)
+   git clone https://github.com/luuzuriaga/Neon-editor.git
 
 
 # Run and deploy your AI Studio app
