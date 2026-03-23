@@ -1,49 +1,94 @@
 @import "tailwindcss";
 
 @theme {
-  --color-neon-pink: #ff00ff;
-  --color-neon-blue: #00f2ff;
-  --color-neon-purple: #bc13fe;
-  --color-neon-green: #39ff14;
-  --font-display: "Orbitron", sans-serif;
+  --color-deep-blue: #0a0a24;
+  
+  /* Colores Pastel Milkshake (Llamativos pero suaves) */
+  --color-milk-pink: #ff85ff;   /* Rosa intenso para Upload */
+  --color-milk-blue: #80dfff;   /* Celeste */
+  --color-milk-purple: #c48eff; /* Morado suave */
+  --color-milk-indigo: #a3a3ff; /* Indigo/Lavanda */
+  --color-milk-teal: #66ffd1;   /* Menta/Turquesa */
+  --color-pastel-white: #f8f8ff;
+  
+  --font-retro-play: "Press Start 2P", system-ui;
+  --font-retro-sans: "Orbitron", sans-serif;
 }
 
 @layer base {
   body {
-    @apply bg-black text-white min-h-screen overflow-x-hidden;
-    background: radial-gradient(circle at 50% 50%, #1a0033 0%, #000000 100%);
+    @apply bg-deep-blue text-pastel-white min-h-screen;
+    background: radial-gradient(circle at 50% 10%, #1e0033 0%, #0a0a24 100%);
   }
 }
 
-.neon-border {
-  box-shadow: 0 0 5px var(--color-neon-blue), 0 0 20px var(--color-neon-blue);
-  border: 1px solid var(--color-neon-blue);
-}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
 
-.neon-text-blue {
-  text-shadow: 0 0 5px var(--color-neon-blue), 0 0 10px var(--color-neon-blue);
-}
-
-.neon-text-pink {
-  text-shadow: 0 0 5px var(--color-neon-pink), 0 0 10px var(--color-neon-pink);
-}
-
-.neon-button {
-  @apply relative overflow-hidden transition-all duration-300;
-  border: 1px solid var(--color-neon-purple);
-  box-shadow: 0 0 5px var(--color-neon-purple);
-}
-
-.neon-button:hover {
-  background: var(--color-neon-purple);
-  box-shadow: 0 0 20px var(--color-neon-purple);
+.title-gradient {
   color: white;
+  text-shadow: 0 0 10px rgba(255, 133, 255, 0.5), 0 0 30px rgba(196, 142, 255, 0.4);
+}
+
+.retro-border-soft {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(128, 223, 255, 0.1);
+}
+
+.bg-scanline {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+  background-size: 100% 4px;
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+/* --- SOMBRAS DE NEÓN PASTEL (Glow effect en Hover) --- */
+.shadow-neon-milk-blue { box-shadow: 0 0 20px rgba(128, 223, 255, 0.4); }
+.shadow-neon-milk-pink { box-shadow: 0 0 20px rgba(255, 133, 255, 0.4); }
+.shadow-neon-milk-purple { box-shadow: 0 0 20px rgba(196, 142, 255, 0.4); }
+.shadow-neon-milk-indigo { box-shadow: 0 0 20px rgba(163, 163, 255, 0.4); }
+.shadow-neon-milk-teal { box-shadow: 0 0 20px rgba(102, 255, 209, 0.4); }
+
+/* --- CLASES DE UTILIDAD PARA COLORES DINÁMICOS --- */
+.border-milk-blue\/30 { border-color: rgba(128, 223, 255, 0.3); }
+.border-milk-pink\/30 { border-color: rgba(255, 133, 255, 0.3); }
+.border-milk-purple\/30 { border-color: rgba(196, 142, 255, 0.3); }
+.border-milk-indigo\/30 { border-color: rgba(163, 163, 255, 0.3); }
+.border-milk-teal\/30 { border-color: rgba(102, 255, 209, 0.3); }
+
+.hover\:border-milk-blue:hover { border-color: var(--color-milk-blue); }
+.hover\:border-milk-pink:hover { border-color: var(--color-milk-pink); }
+.hover\:border-milk-purple:hover { border-color: var(--color-milk-purple); }
+.hover\:border-milk-indigo:hover { border-color: var(--color-milk-indigo); }
+.hover\:border-milk-teal:hover { border-color: var(--color-milk-teal); }
+
+.text-milk-blue { color: var(--color-milk-blue); }
+.text-milk-pink { color: var(--color-milk-pink); }
+.text-milk-purple { color: var(--color-milk-purple); }
+.text-milk-indigo { color: var(--color-milk-indigo); }
+.text-milk-teal { color: var(--color-milk-teal); }
+
+.bg-milk-pink { background-color: var(--color-milk-pink); }
+.bg-milk-teal { background-color: var(--color-milk-teal); }
+
+.hover\:bg-milk-blue\/30:hover { background-color: rgba(128, 223, 255, 0.3); }
+.hover\:bg-milk-pink\/30:hover { background-color: rgba(255, 133, 255, 0.3); }
+.hover\:bg-milk-purple\/30:hover { background-color: rgba(196, 142, 255, 0.3); }
+.hover\:bg-milk-indigo\/30:hover { background-color: rgba(163, 163, 255, 0.3); }
+.hover\:bg-milk-teal\/30:hover { background-color: rgba(102, 255, 209, 0.3); }
+
+.group-hover\:bg-milk-blue:hover .group-hover\:bg-milk-blue { background-color: var(--color-milk-blue); }
+.group-hover\:bg-milk-pink:hover .group-hover\:bg-milk-pink { background-color: var(--color-milk-pink); }
+.group-hover\:bg-milk-purple:hover .group-hover\:bg-milk-purple { background-color: var(--color-milk-purple); }
+.group-hover\:bg-milk-indigo:hover .group-hover\:bg-milk-indigo { background-color: var(--color-milk-indigo); }
+.group-hover\:bg-milk-teal:hover .group-hover\:bg-milk-teal { background-color: var(--color-milk-teal); }
+
+/* Clases 'active' (al hacer clic) para invertir los colores */
+.active\:bg-milk-blue:active { background-color: var(--color-milk-blue); }
+.active\:bg-milk-pink:active { background-color: var(--color-milk-pink); }
+.active\:bg-milk-purple:active { background-color: var(--color-milk-purple); }
+.active\:bg-milk-indigo:active { background-color: var(--color-milk-indigo); }
+.active\:bg-milk-teal:active { background-color: var(--color-milk-teal); }
